@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cursos Presenciais</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="stage">
+    <main class="tela" id="tela">
+      <div class="bg" aria-hidden="true"></div>
+
+      <section class="overlay overlay-cursos" id="menuCursos">
+        <p class="texto-apoio">Selecione um curso para</p>
+        <h1 class="titulo">assistir:</h1>
+
+        <nav class="menu menu-cursos">
+          <button class="botao botao-cursos laranja" onclick="abrirVideo('gastronomia.mp4')">GASTRONOMIA</button>
+          <button class="botao botao-cursos azul" onclick="abrirVideo('gestao.mp4')">GESTÃO</button>
+          <button class="botao botao-cursos laranja" onclick="abrirVideo('saude.mp4')">SAÚDE</button>
+          <button class="botao botao-cursos azul" onclick="abrirVideo('beleza.mp4')">BELEZA</button>
+          <button class="botao botao-cursos laranja" onclick="abrirVideo('informatica.mp4')">INFORMÁTICA</button>
+        </nav>
+      </section>
+
+      <section class="video-layer" id="videoLayer">
+        <video class="video-player" id="videoPlayer" playsinline loop></video>
+
+        <button
+          id="playButton"
+          onclick="iniciarVideoComAudio()"
+          style="
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            z-index:6;
+            border:none;
+            border-radius:24px;
+            padding:28px 42px;
+            font-family:Montserrat, Inter, Arial, sans-serif;
+            font-size:42px;
+            font-weight:800;
+            background:rgba(243,154,0,.95);
+            color:#fff;
+            box-shadow:0 10px 22px rgba(0,0,0,.25);
+            cursor:pointer;
+          ">
+          PLAY
+        </button>
+      </section>
+
+      <a class="voltar" href="./toten.html" onclick="return acaoVoltar()">VOLTAR</a>
+    </main>
+  </div>
+
+  <script>
+    function fitToten(){
+      const tela = document.getElementById('tela');
+      const scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1920);
+      tela.style.transform = `scale(${scale})`;
+    }
+
+    const menuCursos = document.getElementById('menuCursos');
+    const videoLayer = document.getElementById('videoLayer');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playButton = document.getElementById('playButton');
+
+    function abrirVideo(nomeArquivo){
+      videoPlayer.src = `./video/${nomeArquivo}`;
+      videoPlayer.loop = true;
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+      videoPlayer.muted = false;
+
+      menuCursos.style.display = 'none';
+      videoLayer.style.display = 'block';
+      playButton.style.display = 'block';
+    }
+
+    function iniciarVideoComAudio(){
+      videoPlayer.muted = false;
+      videoPlayer.play().then(() => {
+        playButton.style.display = 'none';
+      }).catch(() => {});
+    }
+
+    function fecharVideo(){
+      videoPlayer.pause();
+      videoPlayer.removeAttribute('src');
+      videoPlayer.load();
+      videoLayer.style.display = 'none';
+      menuCursos.style.display = 'flex';
+      playButton.style.display = 'block';
+    }
+
+    function acaoVoltar(){
+      if(videoLayer.style.display === 'block'){
+        fecharVideo();
+        return false;
+      }
+      window.location.href = './toten.html';
+      return false;
+    }
+
+    window.addEventListener('resize', fitToten);
+    fitToten();
+  </script>
+</body>
+</html>
