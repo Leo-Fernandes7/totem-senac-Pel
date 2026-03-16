@@ -75,7 +75,7 @@ body{
   text-shadow:0 10px 20px rgba(0,0,0,.22);
 }
 
-/* TEXTO SOBRE CARROSSEL */
+
 .mensagem{
   position:absolute;
   left:0;
@@ -88,7 +88,7 @@ body{
   pointer-events:none;
 }
 
-/* MENUS */
+
 .menu{
   width:100%;
   display:flex;
@@ -105,7 +105,7 @@ body{
   gap:34px;
 }
 
-/* BOTÕES */
+
 .botao{
   text-decoration:none;
   border:none;
@@ -149,7 +149,7 @@ body{
   color:#ffffff;
 }
 
-/* BOTÃO VOLTAR */
+
 .voltar{
   position:absolute;
   left:50px;
@@ -171,7 +171,7 @@ body{
   transform:scale(0.99);
 }
 
-/* PÁGINAS DE IMAGEM */
+
 .full{
   position:absolute;
   inset:0;
@@ -185,7 +185,7 @@ body{
   pointer-events:none;
 }
 
-/* VÍDEOS */
+
 .video-layer{
   position:absolute;
   inset:0;
@@ -202,7 +202,7 @@ body{
   outline:none;
 }
 
-/* CARROSSEL */
+
 .viewport{
   position:absolute;
   inset:0;
@@ -339,7 +339,7 @@ body{
   z-index:7;
 }
 
-/* UNISENAC */
+
 .tela-unisenac .dots{
   bottom:550px;
   z-index:5;
