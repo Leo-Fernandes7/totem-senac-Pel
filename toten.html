@@ -11,130 +11,220 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    #botaoFlutuante{
-      position:fixed;
-      top:100px;
-      left:40px;
-      width:90px;
-      height:90px;
-      border-radius:50%;
-      border:none;
-      background:#2b57a7;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      box-shadow:0 8px 20px rgba(0,0,0,.3);
-      cursor:grab;
+    /* DESTAQUE ESPECIAL DO CUPOM */
+    .botao-home.destaque {
+      background: linear-gradient(135deg, #ffe44d 0%, #ffb800 100%);
+      color: #2a1470;
+      font-weight: 900;
+      border: 4px solid #fff3b0;
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.18),
+        0 0 22px rgba(255,200,0,.7);
+      transform-origin: center;
+      position: relative;
+      z-index: 1;
+      animation: pulsar-cupom 2s infinite ease-in-out;
     }
 
-    #botaoFlutuante:active{ cursor:grabbing; }
+    @keyframes pulsar-cupom {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          0 8px 22px rgba(0,0,0,.18),
+          0 0 18px rgba(255,200,0,.55);
+      }
 
-    #botaoFlutuante .icone{
-      font-size:32px;
-      position:absolute;
+      50% {
+        transform: scale(1.035);
+        box-shadow:
+          0 10px 26px rgba(0,0,0,.2),
+          0 0 32px rgba(255,200,0,.85);
+      }
     }
 
-    #botaoFlutuante .texto{
-      position:absolute;
-      width:100%;
-      height:100%;
-      font-size:14px;
-      font-weight:800;
+    /* BOTÃO FLUTUANTE */
+    #botaoFlutuante {
+      position: fixed;
+      top: 100px;
+      left: 40px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: none;
+      background: #2b57a7;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      cursor: grab;
     }
 
-    #botaoFlutuante .texto span{
-      position:absolute;
-      left:50%;
-      top:0;
-      transform-origin:0 48px;
+    #botaoFlutuante:active {
+      cursor: grabbing;
     }
 
-    #overlayFlutuante{
-      position:fixed;
-      inset:0;
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:9998;
+    #botaoFlutuante .icone {
+      font-size: 32px;
+      position: absolute;
+    }
+
+    #botaoFlutuante .texto {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    #botaoFlutuante .texto span {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform-origin: 0 48px;
+    }
+
+    /* OVERLAY */
+    #overlayFlutuante {
+      position: fixed;
+      inset: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9998;
       background: rgba(0,0,0,0.2);
     }
 
-    .container-imagens{
-      position:relative;
-      width:100%;
-      height:100%;
+    .container-imagens {
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
-    .img-base, .img-topo{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      max-width:100%;
-      max-height:100%;
+    .img-base, .img-topo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
     }
 
-    .img-topo{ z-index:2; }
-    .img-base{ z-index:1; }
+    .img-topo {
+      z-index: 2;
+    }
 
-    #fecharOverlay{
-      position:absolute;
-      top:40px;
-      right:40px;
-      font-size:50px;
-      color:#fff;
-      z-index:10000;
-      cursor:pointer;
+    .img-base {
+      z-index: 1;
+    }
+
+    #fecharOverlay {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-size: 50px;
+      color: #fff;
+      z-index: 10000;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
+
   <div class="stage">
     <main class="tela" id="tela">
+
       <div class="bg" aria-hidden="true"></div>
 
       <section class="overlay overlay-home">
-        <p class="texto-apoio">Toque na opção desejada e</p>
-        <h1 class="titulo">descubra mais:</h1>
+
+        <p class="texto-apoio">
+          Toque na opção desejada e
+        </p>
+
+        <h1 class="titulo">
+          descubra mais:
+        </h1>
 
         <nav class="menu menu-home">
-          <a class="botao botao-home laranja" href="japrendiz.html">JOVEM APRENDIZ</a>
-          <a class="botao botao-home azul" href="listaempresas.html">LISTA DE EMPRESAS</a>
-          <a class="botao botao-home laranja" href="https://www.senacrs.com.br/hotsite/psg/index.html#/programa-senac-de-gratuidade">CURSOS GRATUITOS</a>
-          <a class="botao botao-home azul" href="cursospresen.html">CURSOS PRESENCIAIS</a>
-          <a class="botao botao-home laranja" href="https://www.ead.senac.br/polos/rs/pelotas/">CURSOS EAD</a>
-          <a class="botao botao-home azul" href="unisenac.html">UNISENAC PELOTAS</a>
+
+          <!-- PRIMEIRO BOTÃO: DESTAQUE DOURADO -->
+          <a class="botao botao-home destaque"
+             href="https://www.senacrs.com.br/hotsite/psg/index.html#/programa-senac-de-gratuidade">
+            GARANTA SEU CUPOM DE DESCONTO
+          </a>
+
+          <a class="botao botao-home laranja"
+             href="japrendiz.html">
+            JOVEM APRENDIZ
+          </a>
+
+          <a class="botao botao-home azul"
+             href="listaempresas.html">
+            LISTA DE EMPRESAS
+          </a>
+
+          <a class="botao botao-home azul"
+             href="cursospresen.html">
+            CURSOS PRESENCIAIS
+          </a>
+
+          <a class="botao botao-home laranja"
+             href="https://www.ead.senac.br/polos/rs/pelotas/">
+            CURSOS EAD
+          </a>
+
+          <a class="botao botao-home azul"
+             href="unisenac.html">
+            UNISENAC PELOTAS
+          </a>
+
         </nav>
       </section>
     </main>
   </div>
 
-  
+  <!-- BOTÃO FLUTUANTE DOE SANGUE -->
   <button id="botaoFlutuante">
+
     <span class="icone">🩸</span>
+
     <div class="texto" id="textoArco"></div>
+
   </button>
 
- 
+  <!-- OVERLAY DE IMAGENS -->
   <div id="overlayFlutuante">
+
     <div id="fecharOverlay">✕</div>
+
     <div class="container-imagens">
+
       <img src="./img/imagem1.png" class="img-base">
+
       <img src="./img/imagem2.png" class="img-topo">
+
     </div>
   </div>
 
   <script>
-    function fitToten(){
+
+    function fitToten() {
       const tela = document.getElementById('tela');
-      const scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1920);
+
+      const scale = Math.min(
+        window.innerWidth / 1080,
+        window.innerHeight / 1920
+      );
+
       tela.style.transform = `scale(${scale})`;
     }
+
     window.addEventListener('resize', fitToten);
     fitToten();
+
 
     const botao = document.getElementById("botaoFlutuante");
     const overlay = document.getElementById("overlayFlutuante");
@@ -145,87 +235,156 @@
     let etapa = 0;
     let intervalo;
 
+
     botao.addEventListener("click", () => {
+
       overlay.style.display = "flex";
+
       etapa = 1;
+
       imgBase.style.display = "block";
       imgTopo.style.display = "none";
 
       clearInterval(intervalo);
+
       intervalo = setInterval(() => {
+
         if (etapa === 1) {
+
           imgTopo.style.display = "block";
           etapa = 2;
+
         } else {
+
           imgTopo.style.display = "none";
           etapa = 1;
+
         }
+
       }, 180000);
+
     });
+
 
     overlay.addEventListener("click", () => {
+
       if (etapa === 1) {
+
         imgTopo.style.display = "block";
         etapa = 2;
+
       } else {
+
         imgTopo.style.display = "none";
         etapa = 1;
+
       }
+
     });
+
 
     fechar.addEventListener("click", (e) => {
+
       e.stopPropagation();
+
       overlay.style.display = "none";
+
       etapa = 0;
+
       clearInterval(intervalo);
+
     });
 
+
+    /* TEXTO CIRCULAR DOE SANGUE */
+
     const texto = "DOE SANGUE";
+
     const containerTexto = document.getElementById("textoArco");
 
     texto.split("").forEach((letra, i) => {
+
       const span = document.createElement("span");
+
       span.innerText = letra;
+
       span.style.transform = `rotate(${i * 14}deg)`;
+
       containerTexto.appendChild(span);
+
     });
+
+
+    /* ARRASTAR BOTÃO FLUTUANTE */
 
     let isDragging = false;
+
     let offsetX, offsetY;
 
+
     botao.addEventListener("mousedown", (e) => {
+
       isDragging = true;
+
       offsetX = e.clientX - botao.offsetLeft;
       offsetY = e.clientY - botao.offsetTop;
+
     });
+
 
     document.addEventListener("mousemove", (e) => {
+
       if (isDragging) {
+
         botao.style.left = (e.clientX - offsetX) + "px";
+
         botao.style.top = (e.clientY - offsetY) + "px";
+
       }
+
     });
+
 
     document.addEventListener("mouseup", () => {
+
       isDragging = false;
+
     });
+
 
     botao.addEventListener("touchstart", (e) => {
+
       isDragging = true;
+
       offsetX = e.touches[0].clientX - botao.offsetLeft;
+
       offsetY = e.touches[0].clientY - botao.offsetTop;
+
     });
+
 
     document.addEventListener("touchmove", (e) => {
+
       if (isDragging) {
-        botao.style.left = (e.touches[0].clientX - offsetX) + "px";
-        botao.style.top = (e.touches[0].clientY - offsetY) + "px";
+
+        botao.style.left =
+          (e.touches[0].clientX - offsetX) + "px";
+
+        botao.style.top =
+          (e.touches[0].clientY - offsetY) + "px";
+
       }
+
     });
 
+
     document.addEventListener("touchend", () => {
+
       isDragging = false;
+
     });
+
   </script>
+
 </body>
 </html>
