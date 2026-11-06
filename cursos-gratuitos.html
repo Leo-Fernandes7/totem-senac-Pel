@@ -61,7 +61,6 @@
       startWithSound();
     }
 
-    btnPlay.addEventListener("touchstart", handlePlay, { passive: false });
     btnPlay.addEventListener("click",      handlePlay);
 
     ["mousemove","mousedown","touchstart","touchmove","keydown"].forEach(evt => {
