@@ -1,64 +1,83 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Toten</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Totem Senac</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* DESTAQUE DOURADO DO CUPOM */
-    .botao-home.destaque {
+    /* DESTAQUE DO CUPOM */
+
+    .botao.destaque {
       background: linear-gradient(135deg, #ffe44d 0%, #ffb800 100%);
       color: #2a1470;
       font-weight: 900;
       border: 4px solid #fff3b0;
+
       box-shadow:
-        0 8px 22px rgba(0,0,0,.18),
-        0 0 22px rgba(255,200,0,.7);
+        0 8px 22px rgba(0, 0, 0, .18),
+        0 0 22px rgba(255, 200, 0, .7);
+
       transform-origin: center;
       position: relative;
       z-index: 1;
+
       animation: pulsar-cupom 2s infinite ease-in-out;
     }
 
     @keyframes pulsar-cupom {
       0%, 100% {
         transform: scale(1);
+
         box-shadow:
-          0 8px 22px rgba(0,0,0,.18),
-          0 0 18px rgba(255,200,0,.55);
+          0 8px 22px rgba(0, 0, 0, .18),
+          0 0 18px rgba(255, 200, 0, .55);
       }
 
       50% {
         transform: scale(1.035);
+
         box-shadow:
-          0 10px 26px rgba(0,0,0,.2),
-          0 0 32px rgba(255,200,0,.85);
+          0 10px 26px rgba(0, 0, 0, .2),
+          0 0 32px rgba(255, 200, 0, .85);
       }
     }
 
     /* BOTÃO FLUTUANTE */
+
     #botaoFlutuante {
       position: fixed;
       top: 100px;
       left: 40px;
+
       width: 90px;
       height: 90px;
-      border-radius: 50%;
+
       border: none;
+      border-radius: 50%;
+
       background: #5a35c8;
       color: #fff;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       z-index: 9999;
-      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
+
       cursor: grab;
+      touch-action: none;
     }
 
     #botaoFlutuante:active {
@@ -66,8 +85,8 @@
     }
 
     #botaoFlutuante .icone {
-      font-size: 32px;
       position: absolute;
+      font-size: 32px;
     }
 
     #botaoFlutuante .texto {
@@ -85,15 +104,18 @@
       transform-origin: 0 48px;
     }
 
-    /* OVERLAY */
+    /* OVERLAY DE IMAGENS */
+
     #overlayFlutuante {
       position: fixed;
       inset: 0;
+
       display: none;
       justify-content: center;
       align-items: center;
+
       z-index: 9998;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, .2);
     }
 
     .container-imagens {
@@ -102,26 +124,43 @@
       height: 100%;
     }
 
-    .img-base, .img-topo {
+    .img-base,
+    .img-topo {
       position: absolute;
       top: 50%;
       left: 50%;
+
       transform: translate(-50%, -50%);
+
       max-width: 100%;
       max-height: 100%;
     }
 
-    .img-topo { z-index: 2; }
-    .img-base { z-index: 1; }
+    .img-base {
+      z-index: 1;
+    }
+
+    .img-topo {
+      z-index: 2;
+    }
 
     #fecharOverlay {
       position: absolute;
       top: 40px;
       right: 40px;
+
       font-size: 50px;
       color: #fff;
+
       z-index: 10000;
       cursor: pointer;
+    }
+
+    /* AJUSTE PARA TOQUE */
+
+    .botao {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
   </style>
 </head>
@@ -129,61 +168,82 @@
 <body>
 
   <div class="stage">
+
     <main class="tela" id="tela">
 
       <div class="bg" aria-hidden="true"></div>
 
       <section class="overlay overlay-home">
 
-        <p class="texto-apoio">Toque na opção desejada e</p>
+        <p class="texto-apoio">
+          Toque na opção desejada e
+        </p>
 
-        <h1 class="titulo">descubra mais:</h1>
+        <h1 class="titulo">
+          descubra mais:
+        </h1>
 
         <nav class="menu menu-home">
 
-          <!-- CUPOM DE DESCONTO -->
-          <a class="botao botao-home destaque"
-             href="cursos-gratuitos.html">
+          <!-- 1. CUPOM DE DESCONTO -->
+          <a
+            class="botao destaque"
+            href="cursos-gratuitos.html"
+          >
             GARANTA SEU CUPOM DE DESCONTO
           </a>
 
-          <!-- JOVEM APRENDIZ -->
-          <a class="botao botao-home roxo"
-             href="japrendiz.html">
+          <!-- 2. JOVEM APRENDIZ -->
+          <a
+            class="botao roxo"
+            href="japrendiz.html"
+          >
             JOVEM APRENDIZ
           </a>
 
-          <!-- LISTA DE EMPRESAS -->
-          <a class="botao botao-home azul"
-             href="listaempresas.html">
+          <!-- 3. LISTA DE EMPRESAS -->
+          <a
+            class="botao azul"
+            href="listaempresas.html"
+          >
             LISTA DE EMPRESAS
           </a>
 
-          <!-- CURSOS PRESENCIAIS -->
-          <a class="botao botao-home roxo"
-             href="cursospresen.html">
+          <!-- 4. CURSOS PRESENCIAIS -->
+          <a
+            class="botao roxo"
+            href="cursospresen.html"
+          >
             CURSOS PRESENCIAIS
           </a>
 
-          <!-- CURSOS EAD -->
-          <a class="botao botao-home azul"
-             href="https://www.ead.senac.br/polos/rs/pelotas/">
+          <!-- 5. CURSOS EAD -->
+          <a
+            class="botao roxo"
+            href="https://www.ead.senac.br/polos/rs/pelotas/"
+          >
             CURSOS EAD
           </a>
 
-          <!-- UNISENAC PELOTAS -->
-          <a class="botao botao-home roxo"
-             href="unisenac.html">
+          <!-- 6. UNISENAC PELOTAS -->
+          <a
+            class="botao azul"
+            href="unisenac.html"
+          >
             UNISENAC PELOTAS
           </a>
 
         </nav>
+
       </section>
+
     </main>
+
   </div>
 
   <!-- BOTÃO FLUTUANTE DOE SANGUE -->
-  <button id="botaoFlutuante">
+
+  <button id="botaoFlutuante" type="button">
 
     <span class="icone">🩸</span>
 
@@ -192,23 +252,36 @@
   </button>
 
   <!-- OVERLAY DE IMAGENS -->
+
   <div id="overlayFlutuante">
 
     <div id="fecharOverlay">✕</div>
 
     <div class="container-imagens">
 
-      <img src="./img/imagem1.png" class="img-base">
+      <img
+        src="./img/imagem1.png"
+        class="img-base"
+        alt=""
+      >
 
-      <img src="./img/imagem2.png" class="img-topo">
+      <img
+        src="./img/imagem2.png"
+        class="img-topo"
+        alt=""
+      >
 
     </div>
+
   </div>
 
   <script>
 
+    /* AJUSTE DA TELA PARA 1080x1920 */
+
     function fitToten() {
-      const tela = document.getElementById('tela');
+
+      const tela = document.getElementById("tela");
 
       const scale = Math.min(
         window.innerWidth / 1080,
@@ -216,23 +289,34 @@
       );
 
       tela.style.transform = `scale(${scale})`;
+
     }
 
-    window.addEventListener('resize', fitToten);
+    window.addEventListener("resize", fitToten);
+
     fitToten();
+
+
+    /* ELEMENTOS DO BOTÃO FLUTUANTE */
 
     const botao = document.getElementById("botaoFlutuante");
     const overlay = document.getElementById("overlayFlutuante");
+
     const imgBase = document.querySelector(".img-base");
     const imgTopo = document.querySelector(".img-topo");
+
     const fechar = document.getElementById("fecharOverlay");
 
     let etapa = 0;
     let intervalo;
 
+
+    /* ABRIR OVERLAY */
+
     botao.addEventListener("click", () => {
 
       overlay.style.display = "flex";
+
       etapa = 1;
 
       imgBase.style.display = "block";
@@ -243,43 +327,64 @@
       intervalo = setInterval(() => {
 
         if (etapa === 1) {
+
           imgTopo.style.display = "block";
           etapa = 2;
+
         } else {
+
           imgTopo.style.display = "none";
           etapa = 1;
+
         }
 
       }, 180000);
 
     });
 
-    overlay.addEventListener("click", () => {
+
+    /* ALTERNAR IMAGENS AO TOCAR NO OVERLAY */
+
+    overlay.addEventListener("click", (e) => {
+
+      if (e.target === fechar) {
+        return;
+      }
 
       if (etapa === 1) {
+
         imgTopo.style.display = "block";
         etapa = 2;
+
       } else {
+
         imgTopo.style.display = "none";
         etapa = 1;
+
       }
 
     });
+
+
+    /* FECHAR OVERLAY */
 
     fechar.addEventListener("click", (e) => {
 
       e.stopPropagation();
 
       overlay.style.display = "none";
+
       etapa = 0;
 
       clearInterval(intervalo);
 
     });
 
+
     /* TEXTO CIRCULAR DOE SANGUE */
 
     const texto = "DOE SANGUE";
+
     const containerTexto = document.getElementById("textoArco");
 
     texto.split("").forEach((letra, i) => {
@@ -287,16 +392,20 @@
       const span = document.createElement("span");
 
       span.innerText = letra;
+
       span.style.transform = `rotate(${i * 14}deg)`;
 
       containerTexto.appendChild(span);
 
     });
 
+
     /* ARRASTAR BOTÃO FLUTUANTE */
 
     let isDragging = false;
-    let offsetX, offsetY;
+
+    let offsetX = 0;
+    let offsetY = 0;
 
     botao.addEventListener("mousedown", (e) => {
 
@@ -307,20 +416,23 @@
 
     });
 
+
     document.addEventListener("mousemove", (e) => {
 
-      if (isDragging) {
+      if (!isDragging) return;
 
-        botao.style.left = (e.clientX - offsetX) + "px";
-        botao.style.top = (e.clientY - offsetY) + "px";
-
-      }
+      botao.style.left = (e.clientX - offsetX) + "px";
+      botao.style.top = (e.clientY - offsetY) + "px";
 
     });
+
 
     document.addEventListener("mouseup", () => {
+
       isDragging = false;
+
     });
+
 
     botao.addEventListener("touchstart", (e) => {
 
@@ -329,29 +441,29 @@
       offsetX = e.touches[0].clientX - botao.offsetLeft;
       offsetY = e.touches[0].clientY - botao.offsetTop;
 
-    });
+    }, { passive: true });
+
 
     document.addEventListener("touchmove", (e) => {
 
-      if (isDragging) {
+      if (!isDragging) return;
 
-        botao.style.left =
-          (e.touches[0].clientX - offsetX) + "px";
+      botao.style.left =
+        (e.touches[0].clientX - offsetX) + "px";
 
-        botao.style.top =
-          (e.touches[0].clientY - offsetY) + "px";
+      botao.style.top =
+        (e.touches[0].clientY - offsetY) + "px";
 
-      }
+    }, { passive: true });
 
-    });
 
     document.addEventListener("touchend", () => {
+
       isDragging = false;
+
     });
 
   </script>
 
-</body>
-</html>
 </body>
 </html>
