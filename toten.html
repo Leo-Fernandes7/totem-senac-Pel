@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -11,7 +12,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* DESTAQUE ESPECIAL DO CUPOM */
+    /* DESTAQUE DOURADO DO CUPOM */
     .botao-home.destaque {
       background: linear-gradient(135deg, #ffe44d 0%, #ffb800 100%);
       color: #2a1470;
@@ -111,13 +112,8 @@
       max-height: 100%;
     }
 
-    .img-topo {
-      z-index: 2;
-    }
-
-    .img-base {
-      z-index: 1;
-    }
+    .img-topo { z-index: 2; }
+    .img-base { z-index: 1; }
 
     #fecharOverlay {
       position: absolute;
@@ -140,19 +136,15 @@
 
       <section class="overlay overlay-home">
 
-        <p class="texto-apoio">
-          Toque na opção desejada e
-        </p>
+        <p class="texto-apoio">Toque na opção desejada e</p>
 
-        <h1 class="titulo">
-          descubra mais:
-        </h1>
+        <h1 class="titulo">descubra mais:</h1>
 
         <nav class="menu menu-home">
 
-          <!-- PRIMEIRO BOTÃO: DESTAQUE DOURADO -->
+          <!-- CUPOM DE DESCONTO -->
           <a class="botao botao-home destaque"
-             href="https://www.senacrs.com.br/hotsite/psg/index.html#/programa-senac-de-gratuidade">
+             href="cursos-gratuitos.html">
             GARANTA SEU CUPOM DE DESCONTO
           </a>
 
@@ -225,7 +217,6 @@
     window.addEventListener('resize', fitToten);
     fitToten();
 
-
     const botao = document.getElementById("botaoFlutuante");
     const overlay = document.getElementById("overlayFlutuante");
     const imgBase = document.querySelector(".img-base");
@@ -235,11 +226,9 @@
     let etapa = 0;
     let intervalo;
 
-
     botao.addEventListener("click", () => {
 
       overlay.style.display = "flex";
-
       etapa = 1;
 
       imgBase.style.display = "block";
@@ -250,56 +239,43 @@
       intervalo = setInterval(() => {
 
         if (etapa === 1) {
-
           imgTopo.style.display = "block";
           etapa = 2;
-
         } else {
-
           imgTopo.style.display = "none";
           etapa = 1;
-
         }
 
       }, 180000);
 
     });
 
-
     overlay.addEventListener("click", () => {
 
       if (etapa === 1) {
-
         imgTopo.style.display = "block";
         etapa = 2;
-
       } else {
-
         imgTopo.style.display = "none";
         etapa = 1;
-
       }
 
     });
-
 
     fechar.addEventListener("click", (e) => {
 
       e.stopPropagation();
 
       overlay.style.display = "none";
-
       etapa = 0;
 
       clearInterval(intervalo);
 
     });
 
-
     /* TEXTO CIRCULAR DOE SANGUE */
 
     const texto = "DOE SANGUE";
-
     const containerTexto = document.getElementById("textoArco");
 
     texto.split("").forEach((letra, i) => {
@@ -307,20 +283,16 @@
       const span = document.createElement("span");
 
       span.innerText = letra;
-
       span.style.transform = `rotate(${i * 14}deg)`;
 
       containerTexto.appendChild(span);
 
     });
 
-
     /* ARRASTAR BOTÃO FLUTUANTE */
 
     let isDragging = false;
-
     let offsetX, offsetY;
-
 
     botao.addEventListener("mousedown", (e) => {
 
@@ -331,37 +303,29 @@
 
     });
 
-
     document.addEventListener("mousemove", (e) => {
 
       if (isDragging) {
 
         botao.style.left = (e.clientX - offsetX) + "px";
-
         botao.style.top = (e.clientY - offsetY) + "px";
 
       }
 
     });
 
-
     document.addEventListener("mouseup", () => {
-
       isDragging = false;
-
     });
-
 
     botao.addEventListener("touchstart", (e) => {
 
       isDragging = true;
 
       offsetX = e.touches[0].clientX - botao.offsetLeft;
-
       offsetY = e.touches[0].clientY - botao.offsetTop;
 
     });
-
 
     document.addEventListener("touchmove", (e) => {
 
@@ -377,11 +341,8 @@
 
     });
 
-
     document.addEventListener("touchend", () => {
-
       isDragging = false;
-
     });
 
   </script>
